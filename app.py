@@ -1,8 +1,20 @@
-import smtplib
+'''
+Copyright (c) Project TemperStat. All rights reserved.
+by Aditya Borgaonkar & Sahil Gothoskar, 2020.
 
-TO = 'borg.aditya@gmail.com'
+https://github.com/adityaborgaonkar
+https://github.com/SahilGothoskar
+
+'''
+import smtplib
+from itertools import chain
+
+readings = [ ['12:45','30 Deg Cel','45 %'],['12:46','32 Deg Cel','51 %'],['12:47','31 Deg Cel','65 %'] ] 
+readings = list(chain.from_iterable(readings))
+
+TO = 'sgothoskar967@gmail.com'
 SUBJECT = 'TEST MAIL'
-TEXT = 'sent from python. created w/ <3 by 4ditya. iot project will be legendary.!'
+TEXT = '\n'.join(map(str, readings))
 
 # Gmail Sign In
 gmail_sender = 'temperstat@gmail.com'
@@ -25,3 +37,11 @@ except:
     print ('error sending mail')
 
 server.quit()
+
+
+
+
+
+
+
+
