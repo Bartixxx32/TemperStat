@@ -6,44 +6,55 @@ https://github.com/adityaborgaonkar
 https://github.com/SahilGothoskar
 
 '''
-import smtplib
-from itertools import chain
 
-readings = [ ['12:45','30 Deg Cel','45 %'],['12:46','32 Deg Cel','51 %'],['12:47','31 Deg Cel','65 %'] ] 
-readings = list(chain.from_iterable(readings))
-readings = '\n'.join(map(str, readings))
+import csv
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email.mime.text import MIMEText
+from email.utils import COMMASPACE
+from email import encoders
+
+
+time, temperature, humidity = "12:45","30 Deg Cel", "45%"
+
+with open('readings.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(["Time", "Temperature", "Humidity"])
+    writer.writerow([time, temperature, humidity])
+    writer.writerow(["12:46", "32 Deg Cel", "51 %"])
+    writer.writerow(["12:47", "33 Deg Cel", "65 %"])
+
 
 # sgothoskar967@gmail.com
 # borg.aditya@gmail.com
-TO = 'sgothoskar967@gmail.com'
-SUBJECT = 'TemperStat Readings'
-TEXT = 'TemperStat\n'+'Time, Temperature & Humidity Readings\n'+readings
 
-# Gmail Sign In
-gmail_sender = 'temperstat@gmail.com'
-gmail_passwd = input()
+SUBJECT = 'IOT Project :: TemperStat Readings'
+FILENAME = 'readings.csv'
+FILEPATH = 'readings.csv'
+MY_EMAIL = 'temperstat@gmail.com'
+MY_PASSWORD = input()
+TO_EMAIL = 'sgothoskar967@gmail.com'
+SMTP_SERVER = 'smtp.gmail.com'
+SMTP_PORT = 587
 
-server = smtplib.SMTP('smtp.gmail.com', 587)
-server.ehlo()
-server.starttls()
-server.login(gmail_sender, gmail_passwd)
+msg = MIMEMultipart()
+msg['From'] = MY_EMAIL
+msg['To'] = COMMASPACE.join([TO_EMAIL])
+msg['Subject'] = SUBJECT
 
-BODY = '\r\n'.join(['To: %s' % TO,
-                    'From: %s' % gmail_sender,
-                    'Subject: %s' % SUBJECT,
-                    '', TEXT])
+part = MIMEBase('application', "octet-stream")
+part.set_payload(open(FILEPATH, "rb").read())
+encoders.encode_base64(part)
+part.add_header('Content-Disposition', 'attachment', filename=FILENAME)
+msg.attach(part)
 
-try:
-    server.sendmail(gmail_sender, [TO], BODY)
-    print ('email sent')
-except:
-    print ('error sending mail')
-
-server.quit()
-
-
-
-
+smtpObj = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+smtpObj.ehlo()
+smtpObj.starttls()
+smtpObj.login(MY_EMAIL, MY_PASSWORD)
+smtpObj.sendmail(MY_EMAIL, TO_EMAIL, msg.as_string())
+smtpObj.quit()
 
 
 
