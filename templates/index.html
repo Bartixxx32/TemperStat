@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <meta http-equiv="refresh" content="5" >
+      <meta http-equiv="refresh" content="2" >
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>TemperStat</title>
@@ -44,8 +44,10 @@
       <div class="container center">
          <div class="field center">
             <div class="control">
-               <input class="input is-info is-rounded" type="text" placeholder="Enter Email to Export CSV" style="width: 20em; color: hsl(204, 86%, 53%);font-weight: 500; letter-spacing: 1px;">&nbsp;&nbsp;
-               <button class="button is-rounded is-info">Send</button>
+               <form action = "/" method = "POST">
+               <input class="input is-info is-rounded" type="text" placeholder="Enter Email to Export CSV" name ="email" style="width: 20em; color: hsl(204, 86%, 53%);font-weight: 500; letter-spacing: 1px;">&nbsp;&nbsp;
+               <button class="button is-rounded is-info" type = "submit" value = "submit">Send</button>
+            </form>
             </div>
          </div>
       </div>
