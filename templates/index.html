@@ -1,3 +1,4 @@
+{% block content %}
 <!DOCTYPE html>
 <html>
    <head>
@@ -29,13 +30,13 @@
       <div class="container center">
          <div class="box">
             <h1 class="title">Temperature</h1>
-            <h1 class="subtitle" style="color: hsl(217, 71%, 53%);font-size: 1.7em;">31 &#8451;</h1>
+            <h1 class="subtitle" style="color: hsl(217, 71%, 53%);font-size: 1.7em;">{{temperature}} &#8451;</h1>
          </div>
       </div>
       <div class="container center">
          <div class="box">
             <h1 class="title">Humidity</h1>
-            <h1 class="subtitle"  style="color: hsl(204, 86%, 53%);font-size: 1.7em;">42 %</h1>
+            <h1 class="subtitle"  style="color: hsl(204, 86%, 53%);font-size: 1.7em;">{{humidity}} %</h1>
          </div>
       </div>
       <br>
@@ -78,3 +79,4 @@
       </div>
    </body>
 </html>
+{%  endblock  %}

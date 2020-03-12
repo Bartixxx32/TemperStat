@@ -15,8 +15,32 @@ from email.mime.text import MIMEText
 from email.utils import COMMASPACE
 from email import encoders
 
+from flask import render_template, url_for, request
+import Adafruit_DHT
+pin = 17
+sensor = Adafruit_DHT.DHT11
 
-time, temperature, humidity = "12:45","30 Deg Cel", "45%"
+
+from flask import Flask
+app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+    temperature, humidity = sensor_1()
+    return render_template("index.html",temperature=temperature, humidity=humidity)
+
+def sensor_1():
+    humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+    if humidity is not None and temperature is not None:
+        return temperature, humidity
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+'''
+time, temperature, humidity = "12:45","30 Deg Cel","45%"
 
 with open('readings.csv', 'w', newline='') as file:
     writer = csv.writer(file)
@@ -34,7 +58,7 @@ FILENAME = 'readings.csv'
 FILEPATH = 'readings.csv'
 MY_EMAIL = 'temperstat@gmail.com'
 MY_PASSWORD = input()
-TO_EMAIL = 'sgothoskar967@gmail.com'
+TO_EMAIL = 'ksanket1998@gmail.com'
 SMTP_SERVER = 'smtp.gmail.com'
 SMTP_PORT = 587
 
@@ -56,6 +80,7 @@ smtpObj.login(MY_EMAIL, MY_PASSWORD)
 smtpObj.sendmail(MY_EMAIL, TO_EMAIL, msg.as_string())
 smtpObj.quit()
 
+'''
 
 
 
