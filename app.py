@@ -73,7 +73,7 @@ def sensor_1():
 
 
 if __name__ == "__main__":
-    app.run(debug=True,host= '0.0.0.0')
+    app.run(debug=True)
 
 '''
 time, temperature, humidity = "12:45","30 Deg Cel","45%"
