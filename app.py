@@ -28,14 +28,13 @@ app = Flask(__name__)
 @app.route('/', methods = ['POST', 'GET'])
 def index():
     temperature, humidity = sensor_1()
-    with open('readings.csv', 'w', newline='') as file:
+    with open('readings.csv', 'a') as file:
     	writer = csv.writer(file)
-    	writer.writerow(["Temperature", "Humidity"])
     	writer.writerow([temperature, humidity])
 
 	# sgothoskar967@gmail.com
 	# borg.aditya@gmail.com
-
+	'''
 	SUBJECT = 'IOT Project :: TemperStat Readings'
 	FILENAME = 'readings.csv'
 	FILEPATH = 'readings.csv'
@@ -62,7 +61,10 @@ def index():
 	smtpObj.login(MY_EMAIL, MY_PASSWORD)
 	smtpObj.sendmail(MY_EMAIL, TO_EMAIL, msg.as_string())
 	smtpObj.quit()
+	'''
     return render_template("index.html",temperature=temperature, humidity=humidity)
+
+
 
 def sensor_1():
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
