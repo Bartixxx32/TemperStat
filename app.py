@@ -7,13 +7,13 @@ https://github.com/SahilGothoskar
 
 '''
 
-import csv
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.base import MIMEBase
-from email.mime.text import MIMEText
-from email.utils import COMMASPACE
-from email import encoders
+#import csv
+#import smtplib
+#from email.mime.multipart import MIMEMultipart
+#from email.mime.base import MIMEBase
+#from email.mime.text import MIMEText
+#from email.utils import COMMASPACE
+#from email import encoders
 
 from flask import render_template, url_for, request
 import Adafruit_DHT
