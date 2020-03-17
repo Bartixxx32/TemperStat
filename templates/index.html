@@ -54,7 +54,7 @@
       <br>
       
       <div class="container center">
-<!--         
+         
          <table class="table center">
             <thead>
                <tr>
@@ -64,21 +64,20 @@
                </tr>
             </thead>
             <tbody>
-               {% for i in data_time %} 
+               
                <tr>
-                  <td>{{ data_time[i]}}</td>
-                  <td>{{ data_temp[i]}}</td>
-                  <td>{{ data_hum[i]}}</td>
-               </tr>
-               {%endfor%} 
+                  {% for i in data_time %} 
+                  <td>{{ i }}</td>
+                  {% endfor %} 
+                  {% for j in data_temp %} 
+                  <td>{{ j }}</td>
+                  {% endfor %}
+                  {% for k in data_hum %} 
+                  <td>{{ k }}</td>
+                  {% endfor %}
+               </tr>  
             </tbody>
          </table>
--->
-      <ol>
-         {% for i in data_time %} 
-            <li> {{ data_time[i] }}</li>
-         {%endfor%} 
-      </ol>
       </div>
    
    </body>
