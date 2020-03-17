@@ -59,10 +59,10 @@ def index():
 	nowtime = datetime.now()
 	nowtime = time.strftime("%H:%M:%S")
 	temperature, humidity = sensor_1()
-    with open('readings.csv', 'a') as file:
-    	writer = csv.writer(file)
-    	writer.writerow([nowtime,temperature, humidity])
-    return render_template("index.html",temperature=temperature, humidity=humidity)
+	with open('readings.csv', 'a') as file:
+		writer = csv.writer(file)
+		writer.writerow([nowtime,temperature, humidity])
+	return render_template("index.html",temperature=temperature, humidity=humidity)
 
 
 def sensor_1():
