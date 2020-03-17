@@ -74,7 +74,7 @@ def index():
 	with open('readings.csv', 'a') as file:
 		writer = csv.writer(file)
 		writer.writerow([nowtime,temperature, humidity])
-	return render_template("index.html",temperature=temperature, humidity=humidity,data_temp=data_temp,data_time=data_time,data_hum=data_hum,temperature_max=temperature_max,humidity_max=humidity_max)
+	return render_template("index.html",temperature=temperature, humidity=humidity,data_temp=data_temp,data_time=data_time,data_hum=data_hum,temperature_max=temperature_max,humidity_max=humidity_max,temperature_min=temperature_min,humidity_min=humidity_min)
 
 
 def sensor_1():
