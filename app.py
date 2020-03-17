@@ -14,7 +14,7 @@ from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
 from email.utils import COMMASPACE
 from email import encoders
-import time
+from time import datetime
 from flask import render_template, url_for, request
 import Adafruit_DHT
 pin = 17
@@ -35,6 +35,7 @@ def mail():
 	MY_EMAIL = 'temperstat@gmail.com'
 	MY_PASSWORD = 'temperstat20'
 	TO_EMAIL = request.form['email']
+	toemail = TO_EMAIL
 	SMTP_SERVER = 'smtp.gmail.com'
 	SMTP_PORT = 587
 	msg = MIMEMultipart()
@@ -52,7 +53,7 @@ def mail():
 	smtpObj.login(MY_EMAIL, MY_PASSWORD)
 	smtpObj.sendmail(MY_EMAIL, TO_EMAIL, msg.as_string())
 	smtpObj.quit()
-	return render_template("mail.html")
+	return render_template("mail.html",toemail=toemail)
 
 @app.route('/', methods = ['POST', 'GET'])
 def index():
