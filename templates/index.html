@@ -64,18 +64,17 @@
                </tr>
             </thead>
             <tbody>
-               
-               <tr>
-                  {% for i in data_time %} 
+               {% for i in data_time %} 
+               {% for j in data_temp %} 
+               {% for k in data_hum %} 
+               <tr> 
                   <td>{{ i }}</td>
-                  {% endfor %} 
-                  {% for j in data_temp %} 
                   <td>{{ j }}</td>
-                  {% endfor %}
-                  {% for k in data_hum %} 
                   <td>{{ k }}</td>
-                  {% endfor %}
-               </tr>  
+               </tr>
+               {% endfor %} 
+               {% endfor %}
+               {% endfor %}
             </tbody>
          </table>
       </div>
