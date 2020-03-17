@@ -52,7 +52,7 @@
          </div>
       </div>
       <br>
-      <!--
+      
       <div class="container center">
          <table class="table center">
             <thead>
@@ -63,25 +63,17 @@
                </tr>
             </thead>
             <tbody>
+               {% for i in range(0, len) %} 
                <tr>
-                  <td>12 : 45</td>
-                  <td>32 &#8451;</td>
-                  <td>40%</td>
+                  <td>{{data_time[i]}}</td>
+                  <td>{{data_temp[i]}}</td>
+                  <td>{{data_hum[i]}}</td>
                </tr>
-               <tr>
-                  <td>12 : 46</td>
-                  <td>34 &#8451;</td>
-                  <td>51%</td>
-               </tr>
-               <tr>
-                  <td>12 : 46</td>
-                  <td>34 &#8451;</td>
-                  <td>51%</td>
-               </tr>
+               {%endfor%} 
             </tbody>
          </table>
       </div>
-   -->
+   
    </body>
 </html>
 {%  endblock  %}

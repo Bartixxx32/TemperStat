@@ -24,6 +24,10 @@ sensor = Adafruit_DHT.DHT11
 from flask import Flask
 app = Flask(__name__)
 
+data_temp = []
+data_hum = []
+data_time = []
+
 
 @app.route('/mail', methods = ['POST', 'GET'])
 def mail():
@@ -60,10 +64,13 @@ def index():
 	nowtime = datetime.now()
 	nowtime = nowtime.strftime("%H:%M:%S")
 	temperature, humidity = sensor_1()
+	data_time.append(nowtime)
+	data_temp.append(temperature)
+	data_hum.append(humidity)
 	with open('readings.csv', 'a') as file:
 		writer = csv.writer(file)
 		writer.writerow([nowtime,temperature, humidity])
-	return render_template("index.html",temperature=temperature, humidity=humidity)
+	return render_template("index.html",temperature=temperature, humidity=humidity, data_time=data_time, data_temp=data_temp, data_hum=data_hum)
 
 
 def sensor_1():
