@@ -14,7 +14,7 @@ from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
 from email.utils import COMMASPACE
 from email import encoders
-
+import time
 from flask import render_template, url_for, request
 import Adafruit_DHT
 pin = 17
@@ -56,10 +56,12 @@ def mail():
 
 @app.route('/', methods = ['POST', 'GET'])
 def index():
+	nowtime = datetime.now()
+	nowtime = time.strftime("%H:%M:%S")
     temperature, humidity = sensor_1()
     with open('readings.csv', 'a') as file:
     	writer = csv.writer(file)
-    	writer.writerow([temperature, humidity])
+    	writer.writerow([nowtime,temperature, humidity])
     return render_template("index.html",temperature=temperature, humidity=humidity)
 
 
