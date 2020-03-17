@@ -67,10 +67,12 @@ def index():
 	data_temp.append(temperature)
 	data_hum.append(humidity)
 	data_time.append(nowtime)
+	temperature_max = max(data_temp)
+	humidity_max = max(data_hum)
 	with open('readings.csv', 'a') as file:
 		writer = csv.writer(file)
 		writer.writerow([nowtime,temperature, humidity])
-	return render_template("index.html",temperature=temperature, humidity=humidity,data_temp=data_temp,data_time=data_time,data_hum=data_hum)
+	return render_template("index.html",temperature=temperature, humidity=humidity,data_temp=data_temp,data_time=data_time,data_hum=data_hum,temperature_max=temperature_max,humidity_max=humidity_max)
 
 
 def sensor_1():

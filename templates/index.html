@@ -31,13 +31,19 @@
       <div class="container center">
          <div class="box">
             <h1 class="title">Temperature</h1>
-            <h1 class="subtitle" style="color: hsl(217, 71%, 53%);font-size: 1.7em;">{{temperature}} &#8451;</h1>
+            <h1 class="subtitle" style="color: hsl(217, 71%, 53%);font-size: 1.7em;">{{ temperature }} &#8451;</h1>
+            <div class="media-right">
+            <h1 class="subtitle" style="color: hsl(348, 100%, 61%)">Max : : {{ temperature_max }}</h1>
+            <h1 class="subtitle" style="color: hsl(141, 53%, 53%)">Min : : {{ temperature_min }}</h1>
+            </div>
          </div>
       </div>
       <div class="container center">
          <div class="box">
             <h1 class="title">Humidity</h1>
-            <h1 class="subtitle"  style="color: hsl(204, 86%, 53%);font-size: 1.7em;">{{humidity}} %</h1>
+            <h1 class="subtitle"  style="color: hsl(204, 86%, 53%);font-size: 1.7em;">{{ humidity }} %</h1>
+            <h1 class="subtitle" style="color: hsl(348, 100%, 61%)">Max : : {{ humidity_max }}</h1>
+            <h1 class="subtitle" style="color: hsl(141, 53%, 53%)">Min : : {{ humidity_min }}</h1>
          </div>
       </div>
       <br>
@@ -108,6 +114,16 @@
                   <td>{{ data_time[8] }}</td>
                   <td>{{ data_temp[8] }}</td>
                   <td>{{ data_hum[8] }}</td>
+               </tr>
+               <tr>
+                  <td>{{ data_time[9] }}</td>
+                  <td>{{ data_temp[9] }}</td>
+                  <td>{{ data_hum[9] }}</td>
+               </tr>
+               <tr>
+                  <td>{{ data_time[10] }}</td>
+                  <td>{{ data_temp[10] }}</td>
+                  <td>{{ data_hum[10] }}</td>
                </tr>
 
             </tbody>
