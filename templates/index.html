@@ -32,7 +32,6 @@
          <div class="box">
             <h1 class="title">Temperature</h1>
             <h1 class="subtitle" style="color: hsl(217, 71%, 53%);font-size: 1.7em;">{{ temperature }} &#8451;</h1>
-            <div class="media-right">
             <h1 class="subtitle" style="color: hsl(348, 100%, 61%)">Max : : {{ temperature_max }}</h1>
             <h1 class="subtitle" style="color: hsl(141, 53%, 53%)">Min : : {{ temperature_min }}</h1>
             </div>
@@ -42,8 +41,8 @@
          <div class="box">
             <h1 class="title">Humidity</h1>
             <h1 class="subtitle"  style="color: hsl(204, 86%, 53%);font-size: 1.7em;">{{ humidity }} %</h1>
-            <h1 class="subtitle" style="color: hsl(348, 100%, 61%)">Max : : {{ humidity_max }}</h1>
-            <h1 class="subtitle" style="color: hsl(141, 53%, 53%)">Min : : {{ humidity_min }}</h1>
+            <h1 class="subtitle" style="color: hsl(204, 86%, 53%)">Max : : {{ humidity_max }}</h1>
+            <h1 class="subtitle" style="color: orange">Min : : {{ humidity_min }}</h1>
          </div>
       </div>
       <br>
@@ -51,16 +50,14 @@
          <div class="field center">
             <div class="control">
                <form action = "/mail" method = "POST">
-               <input class="input is-info is-rounded" type="text" placeholder="Enter Email to Export CSV" name ="email" style="width: 20em; color: hsl(204, 86%, 53%);font-weight: 500; letter-spacing: 1px;">&nbsp;&nbsp;
-               <button class="button is-rounded is-info" type = "submit" value = "submit">Send</button>
-            </form>
+                  <input class="input is-info is-rounded" type="text" placeholder="Enter Email to Export CSV" name ="email" style="width: 20em; color: hsl(204, 86%, 53%);font-weight: 500; letter-spacing: 1px;">&nbsp;&nbsp;
+                  <button class="button is-rounded is-info" type = "submit" value = "submit">Send</button>
+               </form>
             </div>
          </div>
       </div>
       <br>
-      
       <div class="container center">
-         
          <table class="table center">
             <thead>
                <tr>
@@ -75,42 +72,42 @@
                   <td>{{ data_temp[0] }}</td>
                   <td>{{ data_hum[0] }}</td>
                </tr>
-                              <tr>
+               <tr>
                   <td>{{ data_time[1] }}</td>
                   <td>{{ data_temp[1] }}</td>
                   <td>{{ data_hum[1] }}</td>
                </tr>
-                              <tr>
+               <tr>
                   <td>{{ data_time[2] }}</td>
                   <td>{{ data_temp[2] }}</td>
                   <td>{{ data_hum[2] }}</td>
                </tr>
-                              <tr>
+               <tr>
                   <td>{{ data_time[3] }}</td>
                   <td>{{ data_temp[3] }}</td>
                   <td>{{ data_hum[3] }}</td>
                </tr>
-                              <tr>
+               <tr>
                   <td>{{ data_time[4] }}</td>
                   <td>{{ data_temp[4] }}</td>
                   <td>{{ data_hum[4] }}</td>
                </tr>
-                              <tr>
+               <tr>
                   <td>{{ data_time[5] }}</td>
                   <td>{{ data_temp[5] }}</td>
                   <td>{{ data_hum[5] }}</td>
                </tr>
-                              <tr>
+               <tr>
                   <td>{{ data_time[6] }}</td>
                   <td>{{ data_temp[6] }}</td>
                   <td>{{ data_hum[6] }}</td>
                </tr>
-                              <tr>
+               <tr>
                   <td>{{ data_time[7] }}</td>
                   <td>{{ data_temp[7] }}</td>
                   <td>{{ data_hum[7] }}</td>
                </tr>
-                              <tr>
+               <tr>
                   <td>{{ data_time[8] }}</td>
                   <td>{{ data_temp[8] }}</td>
                   <td>{{ data_hum[8] }}</td>
@@ -125,11 +122,9 @@
                   <td>{{ data_temp[10] }}</td>
                   <td>{{ data_hum[10] }}</td>
                </tr>
-
             </tbody>
          </table>
       </div>
-   
    </body>
 </html>
 {%  endblock  %}
