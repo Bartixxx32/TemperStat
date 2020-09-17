@@ -6,4 +6,6 @@ Main tasks that can performed on Project are:
 - Humidity of surroundings where the Model is kept.
 - Displays minumum and maximum values of Humidity,Temperature .
 - If mail entered in the textbox and pressed button of SEND it exports a csv file of measured temperture and humidity values to mail.
-Made by Sahil Aditya.
+
+
+Made by @Sahil & @Aditya.
