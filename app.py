@@ -9,6 +9,7 @@ https://github.com/SahilGothoskar
 
 import csv
 import smtplib
+import time
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
@@ -17,10 +18,9 @@ from email import encoders
 from datetime import datetime
 from flask import render_template, url_for, request
 import Adafruit_DHT
-pin = 17
+import RPi.GPIO as GPIO
+pin = 4
 sensor = Adafruit_DHT.DHT11
-
-
 from flask import Flask
 app = Flask(__name__)
 
@@ -84,7 +84,7 @@ def sensor_1():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
 
 
 
