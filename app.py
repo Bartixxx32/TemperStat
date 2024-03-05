@@ -82,9 +82,12 @@ def index():
         data_hum.clear()
         data_time.clear()
         last_log_time = time.time()
+    render_template("index.html", temperature=temperature, humidity=humidity,
+                    data_temp=data_temp, data_time=data_time, data_hum=data_hum,
+                    temperature_max=temperature_max, humidity_max=humidity_max,
+                    temperature_min=temperature_min, humidity_min=humidity_min)
     
     return render_template("index.html", temperature=temperature, humidity=humidity,
-                           data_temp=data_temp, data_time=data_time, data_hum=data_hum,
                            temperature_max=temperature_max, humidity_max=humidity_max,
                            temperature_min=temperature_min, humidity_min=humidity_min)
 
