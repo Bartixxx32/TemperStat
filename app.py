@@ -1,27 +1,24 @@
 import csv
 import smtplib
-import time
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
 from email.utils import COMMASPACE
 from email import encoders
-from datetime import datetime
-from flask import render_template, request
+from datetime import datetime, timedelta
+from flask import Flask, render_template, request
 import Adafruit_DHT
 import RPi.GPIO as GPIO
 
 pin = 4
 sensor = Adafruit_DHT.DHT11
 
-from flask import Flask
-
 app = Flask(__name__)
 
 data_temp = []
 data_hum = []
 data_time = []
-log_interval = 1800  # Logging interval in seconds (30 minutes)
+last_log_time = datetime.now()
 
 
 @app.route('/mail', methods=['POST'])
@@ -55,6 +52,7 @@ def mail():
 
 @app.route('/', methods=['GET'])
 def index():
+    global last_log_time
     temperature, humidity = sensor_1()
     nowtime = datetime.now().strftime("%H:%M:%S")
 
@@ -62,8 +60,9 @@ def index():
     data_hum.append(humidity)
     data_time.append(nowtime)
 
-    if len(data_temp) >= log_interval / 5:
+    if datetime.now() >= last_log_time + timedelta(minutes=30):
         log_data()
+        last_log_time = datetime.now()
 
     temperature_max = max(data_temp)
     humidity_max = max(data_hum)
